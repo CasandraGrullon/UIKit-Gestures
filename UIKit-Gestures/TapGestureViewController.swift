@@ -20,6 +20,8 @@ class TapGestureViewController: UIViewController {
         return gesture
     }()
     
+    var isPressed = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -31,6 +33,11 @@ class TapGestureViewController: UIViewController {
 
     //3. create a selector method for when the gesture is triggered.
     @objc private func didTap(_ gesture: UITapGestureRecognizer) {
-        heart.image = UIImage(systemName: "heart.fill")
+        isPressed.toggle()
+        if isPressed {
+            heart.image = UIImage(systemName: "heart.fill")
+        } else {
+            heart.image = UIImage(systemName: "heart")
+        }
     }
 }
